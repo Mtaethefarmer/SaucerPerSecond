@@ -1,29 +1,33 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="World" type="Viewport" index="0"]
+[ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=1]
 
-arvr = false
-size = Vector2( 0, 0 )
-own_world = false
-world = null
-transparent_bg = false
-msaa = 0
-hdr = true
-disable_3d = false
-usage = 2
-debug_draw = 0
-render_target_v_flip = false
-render_target_clear_mode = 0
-render_target_update_mode = 2
-audio_listener_enable_2d = false
-audio_listener_enable_3d = false
-physics_object_picking = false
-gui_disable_input = false
-gui_snap_controls_to_pixels = true
-shadow_atlas_size = 0
-shadow_atlas_quad_0 = 2
-shadow_atlas_quad_1 = 2
-shadow_atlas_quad_2 = 3
-shadow_atlas_quad_3 = 4
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 259.509, 10 )
+
+[node name="World" type="Node"]
+
+[node name="Floor Body" type="StaticBody2D" parent="." index="0"]
+
+position = Vector2( 240, 600 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shape" type="CollisionShape2D" parent="Floor Body" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Player" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( 240, 300 )
+_sections_unfolded = [ "Collision", "Transform" ]
 
 
