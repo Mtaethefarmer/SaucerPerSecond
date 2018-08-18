@@ -1,30 +1,21 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-export (int) var speed = 400
+export (int) var speed = 5
 
 var velocity = Vector2()
 
-var screen_size
-
 func _ready():
-	 screen_size = get_viewport_rect().size
+	pass
 
-func _physics_process(delta):
+func _process(delta):
+	get_input()
 	
-	get_input()	
-	
-	move_and_slide(velocity)
+	apply_impulse(Vector2(), velocity)
 
 func get_input():
-	if Input.is_action_pressed('ui_right'):
-		velocity = Vector2(0,-1)
-		velocity.x += 1
-	if Input.is_action_pressed('ui_left'):
-		velocity = Vector2(0,-1)
-		velocity.x -= 1
-	velocity = velocity.normalized() * speed
-	
-func check_boundary():
-	if position.x > screen_size.x:
-		velocity = Vector2(0,-1)
-		velocity.x *= -1
+    velocity = Vector2()
+    if Input.is_action_pressed('ui_right'):
+        velocity.x += 1
+    if Input.is_action_pressed('ui_left'):
+        velocity.x -= 1
+    velocity = velocity.normalized() * speed
