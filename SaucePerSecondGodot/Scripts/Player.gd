@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export (int) var speed = 5
+export (int) var speed = 75
 
 var velocity = Vector2()
 

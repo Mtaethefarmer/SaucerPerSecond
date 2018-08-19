@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Player" type="RigidBody2D" index="0"]
+[node name="Player" type="RigidBody2D"]
 
 position = Vector2( 240, 300 )
 input_pickable = false
@@ -34,7 +34,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
-speed = 5
+speed = 75
 
 [node name="Icon" type="Sprite" parent="." index="0"]
 

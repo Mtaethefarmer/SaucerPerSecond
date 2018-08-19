@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 75.3453 )
+
+[node name="Walls" type="Node2D"]
+
+editor/display_folded = true
+position = Vector2( 240, 300 )
+
+[node name="Right" type="StaticBody2D" parent="." index="0"]
+
+position = Vector2( 250.458, 10.7249 )
+scale = Vector2( 1, 9.71941 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="Right" index="0"]
+
+position = Vector2( -3.36267, -0.516369 )
+scale = Vector2( 1, 0.424146 )
+shape = SubResource( 1 )
+
+[node name="Left" type="StaticBody2D" parent="." index="1"]
+
+position = Vector2( -246.775, 9.49713 )
+scale = Vector2( 1, 9.71941 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="Left" index="0"]
+
+position = Vector2( -3.36267, -0.516369 )
+scale = Vector2( 1, 0.424146 )
+shape = SubResource( 1 )
+
+
