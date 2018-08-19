@@ -11,3 +11,4 @@ func _ready():
 
 func _process(delta):
 	$Walls.position.y = $Player.position.y
+	$Interface.rect_position.y = $Player.position.y + $Player/Camera2D.offset.y

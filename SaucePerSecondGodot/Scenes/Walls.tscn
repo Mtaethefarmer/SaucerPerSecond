@@ -7,7 +7,6 @@ extents = Vector2( 10, 75.3453 )
 
 [node name="Walls" type="Node2D"]
 
-editor/display_folded = true
 position = Vector2( 240, 300 )
 
 [node name="Right" type="StaticBody2D" parent="." index="0"]
@@ -19,7 +18,7 @@ collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
-friction = 1.0
+friction = 0.1
 bounce = 0.0
 
 [node name="Shape" type="CollisionShape2D" parent="Right" index="0"]
@@ -37,7 +36,7 @@ collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
-friction = 1.0
+friction = 0.1
 bounce = 0.0
 
 [node name="Shape" type="CollisionShape2D" parent="Left" index="0"]

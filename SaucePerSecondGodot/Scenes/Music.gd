@@ -29,7 +29,7 @@ func play_beat():
 		emit_signal("beat_played", play_head)
 		
 #DEBUG INFO
-		$Clap.play()
+#		$Clap.play()
 #		print("Playhead " + str(get_playback_position()))
 #		print("Crotchet = " + str(crotchet))
 #		print("Beat Count = " +str(beat_count))
