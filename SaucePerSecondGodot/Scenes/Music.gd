@@ -8,7 +8,7 @@ onready var bpm  = 104
 onready var crotchet =  60.0 / bpm
 
 #Amount of acceptable lag in input presses per sec
-onready var latency = 0.5
+onready var latency = 0.3
 
 #Current positon in the song
 onready var play_head = 0.0
@@ -16,6 +16,7 @@ onready var play_head = 0.0
 #Where the last beat was played in the song
 var last_beat = 0.0
 
+signal beat_played
 signal played_on_beat
 signal played_off_beat
 
@@ -33,6 +34,7 @@ func play_beat():
 	#Find the last beat
 	if play_head > last_beat + crotchet:
 		last_beat += crotchet
+		emit_signal("beat_played", crotchet)
 
 func check_timing():
 	#Check if the player pressed the left or right keys

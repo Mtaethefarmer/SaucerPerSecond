@@ -45,6 +45,14 @@ bus = "Master"
 
 [node name="Interface" parent="." index="4" instance=ExtResource( 8 )]
 
-_sections_unfolded = [ "Rect" ]
+margin_left = -7.0
+margin_right = 5.0
+rect_min_size = Vector2( 0, 0 )
+
+[connection signal="beat_played" from="Music" to="Interface" method="_on_Music_beat_played"]
+
+[connection signal="played_off_beat" from="Music" to="Interface" method="_on_Music_played_off_beat"]
+
+[connection signal="played_on_beat" from="Music" to="Interface" method="_on_Music_played_on_beat"]
 
 
