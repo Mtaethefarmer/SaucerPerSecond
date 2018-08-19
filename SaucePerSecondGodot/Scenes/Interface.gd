@@ -1,5 +1,7 @@
 extends MarginContainer
 
+var score = 0
+
 func _ready():
 	$HBoxContainer/Right.color = Color(0, 0, 0, 0)
 	$HBoxContainer/Left.color = Color(0, 0, 0, 0)
