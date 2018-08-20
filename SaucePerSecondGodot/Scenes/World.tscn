@@ -1,15 +1,24 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Walls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sounds/Shuffle_Through_the_Night.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Scenes/Music.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Music.gd" type="Script" id=5]
 [ext_resource path="res://Sounds/Clap.wav" type="AudioStream" id=6]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Spawner.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Mob.tscn" type="PackedScene" id=10]
 
-[node name="World" type="Node" index="0"]
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 180, 0, 0, 0, 0, 0, 180, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="World" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Rect" ]
@@ -48,6 +57,25 @@ bus = "Master"
 margin_left = -7.0
 margin_right = 5.0
 rect_min_size = Vector2( 0, 0 )
+
+[node name="Spawner" type="Path2D" parent="." index="5"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+curve = SubResource( 1 )
+script = ExtResource( 9 )
+Mob = ExtResource( 10 )
+
+[node name="Spawn Location" type="PathFollow2D" parent="Spawner" index="0"]
+
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[connection signal="beat_played" from="Music" to="Spawner" method="_on_Music_beat_played"]
 
 [connection signal="beat_played" from="Music" to="Interface" method="_on_Music_beat_played"]
 

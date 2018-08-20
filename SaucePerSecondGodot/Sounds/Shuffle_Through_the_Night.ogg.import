@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Shuffle_Through_the_Night.ogg-1bec541714e9d83041d5ca
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

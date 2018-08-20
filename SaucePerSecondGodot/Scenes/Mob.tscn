@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Mob.gd" type="Script" id=1]
+[ext_resource path="res://Imgs/Asteroids_32x32_008.png" type="Texture" id=2]
+[ext_resource path="res://Imgs/flame.shader" type="Shader" id=3]
+[ext_resource path="res://purple_yellow_particles.tres" type="Material" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 30.9669
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = ExtResource( 3 )
+shader_param/time_factor = null
+shader_param/amplitude = null
+shader_param/x_time_step = null
+shader_param/y_time_step = null
+shader_param/color_time_step = null
+
+[node name="Mob" type="RigidBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 0
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+min_speed = 150
+max_speed = 250
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Visibility" type="VisibilityNotifier2D" parent="." index="1"]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+material = SubResource( 3 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Particles2D" type="Particles2D" parent="Sprite" index="0"]
+
+material = SubResource( 2 )
+emitting = true
+amount = 6
+lifetime = 0.5
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = ExtResource( 4 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Material", "Process Material", "Time" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Mob_body_entered"]
+
+[connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]
+
+

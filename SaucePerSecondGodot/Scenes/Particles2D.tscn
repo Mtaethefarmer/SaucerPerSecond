@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Title Screen/flame.shader" type="Shader" id=1]
+[ext_resource path="res://Title Screen/purple_yellow_particles.tres" type="Material" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/time_factor = null
+shader_param/amplitude = null
+shader_param/x_time_step = null
+shader_param/y_time_step = null
+shader_param/color_time_step = null
+
+[node name="Particles2D" type="Particles2D"]
+
+material = SubResource( 1 )
+position = Vector2( 4, 0 )
+emitting = true
+amount = 50
+lifetime = 0.75
+one_shot = false
+preprocess = 0.0
+speed_scale = 0.25
+explosiveness = 0.2
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = ExtResource( 2 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Material", "Process Material", "Time" ]
+
+
