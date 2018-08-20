@@ -8,16 +8,6 @@ func _ready():
 	
 func _process(delta):
 	pass
-#	#Check for input
-#	if Input.is_action_pressed("ui_right"):
-#		$"Beat Feedback"/Right.color = Color(0, 1, 0, 0.5)
-#	if Input.is_action_pressed("ui_left"):
-#		$"Beat Feedback"/Left.color = Color(1, 0, 0, 0.5)
-#
-#	if Input.is_action_just_released("ui_right"):
-#		$"Beat Feedback"/Right.color = Color(0, 0, 0, 0)
-#	if Input.is_action_just_released("ui_left"):
-#		$"Beat Feedback"/Left.color = Color(0, 0, 0, 0)
 
 func _on_Music_played_off_beat():
 	#Player loses points
@@ -28,10 +18,11 @@ func _on_Music_played_off_beat():
 	#Check for input
 	if Input.is_action_pressed("ui_right"):
 		$"Beat Feedback/Right/Tween".stop_all()
-		$"Beat Feedback"/Right.color = Color(1, 0, 0, 0.175)
+		$"Beat Feedback/Right/Tween".interpolate_property($"Beat Feedback/Right", "color", Color(1, 0, 0, 1), Color(0, 0, 0, 0.0), .75,Tween.TRANS_BACK,Tween.EASE_OUT)
+		$"Beat Feedback/Right/Tween".start()
 	if Input.is_action_pressed("ui_left"):
 		$"Beat Feedback/Left/Tween".stop_all()
-		$"Beat Feedback"/Left.color = Color(1, 0, 0, 0.175)
+		$"Beat Feedback/Left/Tween".interpolate_property($"Beat Feedback/Left", "color", Color(1, 0, 0, 1), Color(0, 0, 0, 0.0), .75,Tween.TRANS_BACK,Tween.EASE_OUT)
 
 func _on_Music_played_on_beat():
 	#Player gaines points
@@ -42,10 +33,12 @@ func _on_Music_played_on_beat():
 	#Check for input
 	if Input.is_action_pressed("ui_right"):
 		$"Beat Feedback/Right/Tween".stop_all()
-		$"Beat Feedback"/Right.color = Color(0, 1, 0, 0.075)
+		$"Beat Feedback/Right/Tween".interpolate_property($"Beat Feedback/Right", "color", Color(0, 1, 0, 1), Color(0, 0, 0, 0.0), .75,Tween.TRANS_BACK,Tween.EASE_OUT)
+		$"Beat Feedback/Right/Tween".start()
 	if Input.is_action_pressed("ui_left"):
 		$"Beat Feedback/Left/Tween".stop_all()
-		$"Beat Feedback"/Left.color = Color(0, 1, 0, 0.075)
+		$"Beat Feedback/Left/Tween".interpolate_property($"Beat Feedback/Left", "color", Color(0, 1, 0, 1), Color(0, 0, 0, 0.0), .75,Tween.TRANS_BACK,Tween.EASE_OUT)
+		$"Beat Feedback/Left/Tween".start()
 
 func _on_Music_beat_played(crochet):
 	#Change the color of the right part of the screen based on the rhythm

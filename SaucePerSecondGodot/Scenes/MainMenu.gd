@@ -1,7 +1,7 @@
 extends Control
 
-onready var Game = preload("res://Scenes/World.tscn")
-onready var Instructions = preload("res://Scenes/Instructions.tscn")
+onready var Game = load("res://Scenes/World.tscn")
+onready var Instructions = load("res://Scenes/Instructions.tscn")
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
